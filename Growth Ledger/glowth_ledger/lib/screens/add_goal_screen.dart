@@ -1,5 +1,3 @@
-// lib/screens/add_goal_screen.dart
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../models/goal_model.dart';
@@ -21,7 +19,7 @@ class _AddGoalScreenState extends State<AddGoalScreen> {
       return;
     }
     Provider.of<GoalProvider>(context, listen: false)
-       .addGoal(_titleController.text, _selectedCategory);
+        .addGoal(_titleController.text, _selectedCategory);
     Navigator.of(context).pop();
   }
 
@@ -35,22 +33,32 @@ class _AddGoalScreenState extends State<AddGoalScreen> {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
-          children:,
-                  ),
+          children: [
+            TextField(
+              controller: _titleController,
+              decoration: const InputDecoration(labelText: '목표 제목'),
+            ),
+            const SizedBox(height: 20),
+            DropdownButton<GoalCategory>(
+              value: _selectedCategory,
+              items: GoalCategory.values.map((category) {
+                return DropdownMenuItem(
+                  value: category,
+                  child: Text(category.toString().split('.').last),
                 );
               }).toList(),
               onChanged: (value) {
-                if (value!= null) {
+                if (value != null) {
                   setState(() {
                     _selectedCategory = value;
                   });
                 }
               },
             ),
-            const SizedBox(height = 30),
+            const SizedBox(height: 30),
             ElevatedButton(
-              onPressed = _submitData,
-              child = const Text('목표 추가하기'),
+              onPressed: _submitData,
+              child: const Text('목표 추가하기'),
             ),
           ],
         ),

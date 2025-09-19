@@ -1,5 +1,3 @@
-// lib/screens/home_screen.dart
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/goal_provider.dart';
@@ -15,14 +13,16 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('성장 로그'),
-        actions:,
+        actions: const [],
       ),
       body: Consumer<GoalProvider>(
         builder: (ctx, goalProvider, child) {
           final goals = goalProvider.goals;
           final recommendations = goalProvider.getAIRecommendations();
           return ListView(
-            children:,
+            children: const [
+              Text('Your goals will appear here.'),
+            ],
           );
         },
       ),

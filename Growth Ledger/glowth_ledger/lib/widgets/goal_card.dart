@@ -20,8 +20,7 @@ class GoalCard extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children:,
-            ),
+          children: [
             const SizedBox(height: 8),
             Text(
               goal.title,
@@ -35,7 +34,8 @@ class GoalCard extends StatelessWidget {
                     value: goal.progress,
                     minHeight: 10,
                     backgroundColor: Colors.grey,
-                    valueColor: AlwaysStoppedAnimation<Color>(Theme.of(context).primaryColorLight),
+                    valueColor: AlwaysStoppedAnimation<Color>(
+                        Theme.of(context).primaryColorLight),
                     borderRadius: BorderRadius.circular(5),
                   ),
                 ),
@@ -47,12 +47,12 @@ class GoalCard extends StatelessWidget {
               value: goal.progress,
               onChanged: (newProgress) {
                 Provider.of<GoalProvider>(context, listen: false)
-                   .updateProgress(goal.id, newProgress);
+                    .updateProgress(goal.id, newProgress);
               },
             ),
           ],
         ),
       ),
-    )
+    );
   }
 }

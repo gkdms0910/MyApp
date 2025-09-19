@@ -6,9 +6,21 @@ import '../models/goal_model.dart';
 
 class GoalProvider with ChangeNotifier {
   final List<Goal> _goals = [
-    Goal(id: 'g1', title: '매일 30분 달리기', category: GoalCategory.fitness, progress: 0.75),
-    Goal(id: 'g2', title: 'Flutter 심화 과정 수강', category: GoalCategory.learning, progress: 0.4),
-    Goal(id: 'g3', title: '매일 10분 명상하기', category: GoalCategory.mentalHealth, progress: 0.9),
+    Goal(
+        id: 'g1',
+        title: '매일 30분 달리기',
+        category: GoalCategory.fitness,
+        progress: 0.75),
+    Goal(
+        id: 'g2',
+        title: 'Flutter 심화 과정 수강',
+        category: GoalCategory.learning,
+        progress: 0.4),
+    Goal(
+        id: 'g3',
+        title: '매일 10분 명상하기',
+        category: GoalCategory.mentalHealth,
+        progress: 0.9),
   ];
 
   List<Goal> get goals => [..._goals];
@@ -44,9 +56,9 @@ class GoalProvider with ChangeNotifier {
       GoalCategory.mentalHealth: "감사 일기를 작성하면 긍정적인 마음을 유지하는 데 도움이 됩니다.",
       GoalCategory.career: "관심 분야의 전문가와 커피챗을 신청해보세요.",
     };
-    
+
     // 사용자가 설정한 목표 카테고리를 기반으로 추천 메시지를 생성합니다.
-    List<String> personalizedRecommendations =;
+    List<String> personalizedRecommendations = [];
     final userCategories = _goals.map((g) => g.category).toSet();
 
     for (var category in userCategories) {
@@ -54,9 +66,9 @@ class GoalProvider with ChangeNotifier {
         personalizedRecommendations.add(recommendations[category]!);
       }
     }
-    
+
     if (personalizedRecommendations.isEmpty) {
-       personalizedRecommendations.add("새로운 분야에 도전해보세요! 당신의 잠재력은 무한합니다.");
+      personalizedRecommendations.add("새로운 분야에 도전해보세요! 당신의 잠재력은 무한합니다.");
     }
 
     return personalizedRecommendations;
